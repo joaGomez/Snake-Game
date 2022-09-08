@@ -18,6 +18,8 @@ EXIT_GAME_VALUE = -1
 EXIT_TO_MENU_VALUE = -2
 CONTINUE_VALUE = 1
 
+IMAGINARY_POSITION = -999
+
 #-------------------------
 #       COLORS
 #-------------------------

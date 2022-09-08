@@ -17,8 +17,8 @@ class Menu:
 
         self.gameModes = GameModes(self.screen, self.font)
 
-        self.logo = pygame.image.load(os.path.join('Snake_Game\Imagenes', 'logo_snake.jpg'))
-        self.keyboard_input = pygame.image.load(os.path.join('Snake_Game\Imagenes', 'key_menu2.png'))
+        self.logo = pygame.image.load(os.path.join('Snake_Game_Source_Code\Imagenes', 'logo_snake.jpg'))
+        self.keyboard_input = pygame.image.load(os.path.join('Snake_Game_Source_Code\Imagenes', 'key_menu2.png'))
 
     def printData(self):
         self.screen.fill(WHITE)

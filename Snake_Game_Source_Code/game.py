@@ -65,7 +65,7 @@ def printHighScores(screen, score):
     
     screen.fill(BLACK)
     
-    title_font = pygame.font.Font(os.path.join('Snake_Game/Fuentes', '256BYTES.TTF'), 40)
+    title_font = pygame.font.Font(os.path.join('Snake_Game_Source_Code/Fuentes', '256BYTES.TTF'), 40)
     
     cont = pygame.font.Font(None, 20)
     
@@ -295,7 +295,15 @@ class Fruit:
         self.size = 16
         self.position_x = START_POSITION_FRUIT[0]
         self.position_y = START_POSITION_FRUIT[1]
-    
+
+        self.target_position_x = IMAGINARY_POSITION         # This means that actually there is no target position as it doen't move, but this can change
+        self.target_position_y = IMAGINARY_POSITION
+        
+        self.boost = False      # After eating ceratin fruitsthe player could get a boost on a certain ability 
+        self.ninja_mode = False    # Changes target position and it moves towards it, making it harder for the player
+        self.speed = 0
+
+        
     def draw(self):
         pygame.draw.circle(self.screen, self.color, (self.position_x + 8, self.position_y + 8), 8)
         
@@ -316,14 +324,14 @@ class Game:
         self.surface = pygame.display.set_mode(SURFACE)
         pygame.display.set_caption('Snake Game')
         
-        self.logo1 = pygame.image.load(os.path.join('Snake_Game/Imagenes', 'logoserp.png'))
-        self.gameOver = pygame.image.load(os.path.join('Snake_Game/Imagenes', 'gameoverchi.png'))
-        self.explosion = pygame.image.load(os.path.join('Snake_Game/Imagenes', 'explosiongrand.png'))
+        self.logo1 = pygame.image.load(os.path.join('Snake_Game_Source_Code/Imagenes', 'logoserp.png'))
+        self.gameOver = pygame.image.load(os.path.join('Snake_Game_Source_Code/Imagenes', 'gameoverchi.png'))
+        self.explosion = pygame.image.load(os.path.join('Snake_Game_Source_Code/Imagenes', 'explosiongrand.png'))
         
-        #self.colision_sound = pygame.mixer.Sound(os.path.join('Snake_Game/Audio', 'colision.wav'))     #TODO
-        #pygame.mixer.music.load('Snake_Game/eatfruit.ogg')
+        #self.colision_sound = pygame.mixer.Sound(os.path.join('Snake_Game_Source_Code/Audio', 'colision.wav'))     #TODO
+        #pygame.mixer.music.load('Snake_Game_Source_Code/eatfruit.ogg')
         #pygame.mixer.music.play(3)
-        #self.eat_sound = pygame.mixer.Sound(os.path.join('Snake_Game/Audio', 'eatfruit.wav'))
+        #self.eat_sound = pygame.mixer.Sound(os.path.join('Snake_Game_Source_Code/Audio', 'eatfruit.wav'))
         
         self.basic_font = pygame.font.Font(None, 25)
         self.snake = Snake(self.surface, .1)

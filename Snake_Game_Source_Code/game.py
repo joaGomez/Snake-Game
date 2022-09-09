@@ -299,7 +299,7 @@ class Fruit:
         self.target_position_x = IMAGINARY_POSITION         # This means that actually there is no target position as it doen't move, but this can change
         self.target_position_y = IMAGINARY_POSITION
         
-        self.boost = False      # After eating ceratin fruitsthe player could get a boost on a certain ability 
+        self.boost = False      # After eating ceratin fruits the player could get a boost on a certain ability 
         self.ninja_mode = False    # Changes target position and it moves towards it, making it harder for the player
         self.speed = 0
 
@@ -343,6 +343,8 @@ class Game:
         self.multiplier = 0
         self.speed_multiplier = 10
         self.fps = 60
+        self.eaten_fruit = 0
+        self.level = 0
         self.game_state = 'start'
         
         
@@ -398,6 +400,10 @@ class Game:
         
         if self.snake.eatFruit(self.fruit):
             #self.eat_sound.play()      #TODO
+            self.eaten_fruit += 1
+            if self.eaten_fruit % 3 == 0:
+                self.level += 1
+                print(self.level)
             self.fruit.move()
             self.snake.snake_body.add(self.snake)
             self.score += 100 + 100*self.multiplier
